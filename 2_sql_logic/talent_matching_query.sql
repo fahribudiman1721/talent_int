@@ -1,15 +1,3 @@
--- === MODEL V2.0 - REFINEMENT NOTES ===
--- This SQL script reflects the final, optimized model presented in the report.
--- Key refinements from the initial exploration include:
---
--- 1. (REMOVED) 'Department': Removed from the final model, making the model more efficient.
---
--- 2. (ADDED) Inverse PAPI Logic: Implemented inverse scoring for 'Papi_S', 'Papi_G', and 'Papi_T'.
---    Deeper analysis revealed high performers score *lower* in these areas,
---    showing a "work smarter, more independent" profile that the model now captures.
---
--- 3. (CLEANED) Redundant comments from the exploration phase have been removed for clarity.
--- === END OF NOTES ===
 
 
 
@@ -85,7 +73,7 @@ mbti_cleaned_typos as(
 SELECT
   employee_id,
   CASE 
-    WHEN mbti = 'inftj' THEN 'UNKNOWN'
+    WHEN mbti = 'inftj' THEN 'NOTHING'
     ELSE UPPER(mbti)
     END as mbti_cleaned
 FROM profiles_psych
